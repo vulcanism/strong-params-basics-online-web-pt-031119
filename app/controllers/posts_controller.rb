@@ -22,6 +22,12 @@ class PostsController < ApplicationController
 	  @post.update(params.require(:post).permit(:title))
     redirect_to post_path(@post)
 	end
+	
+	private
+ 
+  def post_params
+    params.require(:post).permit(:title, :description)
+  end
 
 	def edit
 	  @post = Post.find(params[:id])
